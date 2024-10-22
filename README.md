@@ -1,16 +1,84 @@
-# mon_app_gemini
+# ✨ Application Gemini Multi-Chat 📱
 
-A new Flutter project.
+Bienvenue dans l'application **Gemini Multi-Chat** ! Il s'agit d'une application **Flutter** qui supporte les thèmes **clairs** et **sombres**, 
+avec une messagerie en temps réel entre utilisateurs et une interface de chat avec une IA. L'application permet de catégoriser et filtrer les conversations, 
+renommer les chats, et stocker les données de manière persistante avec **Shared Preferences**. 🗂️
 
-## Getting Started
+## 🌟 Fonctionnalités
 
-This project is a starting point for a Flutter application.
+- **💬 Chat en temps réel** : Engagez des conversations avec une IA ou d'autres utilisateurs de manière fluide.
+- **🌙 Support du mode sombre** : Passez facilement entre les thèmes clairs et sombres, avec les préférences stockées localement.
+- **🔍 Recherche de chats** : Trouvez rapidement vos chats ou messages avec la fonctionnalité de recherche.
+- **📁 Catégorisation des chats** : Groupez vos conversations par catégories pour une meilleure organisation.
+- **✍️ Renommage des chats** : Personnalisez vos discussions en renommant les salons de chat.
+- **💾 Stockage persistant** : Sauvegardez les conversations, les préférences et les paramètres de thème à travers les lancements de l'application.
+- **🔄 Animations fluides** : Des animations douces et esthétiques grâce au package **flutter_staggered_animations**.
+  
+## 🛠️ Technologies Utilisées
 
-A few resources to get you started if this is your first Flutter project:
+- **Flutter** : Framework pour construire des applications compilées nativement pour mobile, web, et desktop à partir d'une seule base de code.
+- **Shared Preferences** : Stockage local pour conserver les données utilisateur, l'historique des chats et les préférences.
+- **HTTP** : Requêtes vers un serveur distant pour récupérer les réponses de l'IA dans le chat.
+- **Intl** : Formatage des dates et des nombres de manière localisée.
+- **Google Fonts** : Utilisation de belles polices pour améliorer l'interface utilisateur.
+- **Gemini AI API** : Intégration de l'API Gemini AI pour générer des réponses intelligentes dans le chat.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🚀 Commencer avec le projet
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Pour démarrer avec ce projet, suivez ces étapes :
+
+1. **Cloner le dépôt** :
+
+   ```bash
+   git clone https://github.com/nomutilisateur/gemini-multi-chat.git
+   ```
+
+2. **Installer les dépendances** :
+
+   ```bash
+   cd gemini-multi-chat
+   flutter pub get
+   ```
+
+3. **Configurer la clé API** :
+   - Obtenez une clé API de Gemini et remplacez l'élément de substitution dans `ChatScreen` :
+
+   ```dart
+   const String apiKey = 'VOTRE_CLÉ_API';
+   ```
+
+4. **Lancer l'application** :
+
+   ```bash
+   flutter run
+   ```
+
+## 🎨 Personnalisation
+
+Vous pouvez facilement modifier et étendre cette application :
+
+- **Thèmes** : Modifiez les thèmes clairs et sombres dans `MyApp` pour correspondre à vos besoins en design.
+- **Catégories de chat** : Ajoutez ou modifiez des catégories de chat selon vos besoins.
+- **Backend API** : Remplacez l'API Gemini AI par une autre API de chatbot de votre choix.
+  
+## 🤝 Contribuer
+
+N'hésitez pas à soumettre des **issues** et des **pull requests** pour aider à améliorer le projet ! 💻
+
+1. Forkez le dépôt.
+2. Créez une nouvelle branche.
+3. Apportez vos modifications.
+4. Soumettez une pull request.
+
+## ⚙️ Dépendances
+
+- `flutter`
+- `http`
+- `intl`
+- `shared_preferences`
+- `google_fonts`
+- `flutter_staggered_animations`
+
+## 📜 Licence
+
+Ce projet est sous licence MIT. Consultez le fichier [LICENSE](LICENSE) pour plus de détails.
