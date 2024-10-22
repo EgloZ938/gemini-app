@@ -1,0 +1,3 @@
+class Config {
+  static const String apiKey = 'VOTRE_CLE_API_ICI';
+}

@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -662,7 +663,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
-  final String apiKey = 'AIzaSyD_Dh7Ea2QTyK3kl1MDFWz_4UWYw81JAGE';
+  final String apiKey = Config.apiKey;
   late List<ChatMessage> _messages;
   bool _isLoading = false;
 

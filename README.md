@@ -41,11 +41,15 @@ Pour démarrer avec ce projet, suivez ces étapes :
    ```
 
 3. **Configurer la clé API** :
-   - Obtenez une clé API de Gemini et remplacez l'élément de substitution dans `ChatScreen` :
-
-   ```dart
-   const String apiKey = 'VOTRE_CLÉ_API';
-   ```
+   - Copiez le fichier `lib/config.dart.example` vers `lib/config.dart`
+   - Créez votre clé API sur [Google AI Studio](https://makersuite.google.com/app/apikey)
+   - Remplacez `VOTRE_CLE_API_ICI` dans `config.dart` par votre clé API :
+     ```dart
+     class Config {
+       static const String apiKey = 'VOTRE_CLE_API_ICI';
+     }
+     ```
+   > Note : Le fichier `config.dart` est dans le .gitignore et ne sera pas partagé sur GitHub pour des raisons de sécurité.
 
 4. **Lancer l'application** :
 
