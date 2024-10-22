@@ -582,6 +582,51 @@ class _ChatListScreenState extends State<ChatListScreen> {
                                       ),
                                     ],
                                   ),
+                                  if (chat.messages.isNotEmpty) ...[
+                                    const SizedBox(height: 8),
+                                    Container(
+                                      padding: const EdgeInsets.all(12),
+                                      decoration: BoxDecoration(
+                                        color: isDark
+                                            ? Colors.black.withOpacity(0.2)
+                                            : Colors.grey.withOpacity(0.1),
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                chat.messages.last.isUser ? Icons.person : Icons.smart_toy,
+                                                size: 14,
+                                                color: isDark ? Colors.white38 : Colors.black38,
+                                              ),
+                                              const SizedBox(width: 6),
+                                              Text(
+                                                chat.messages.last.isUser ? 'Vous' : 'Gemini',
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: isDark ? Colors.white38 : Colors.black38,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 4),
+                                          Text(
+                                            chat.messages.last.text,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              color: isDark ? Colors.white70 : Colors.black87,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                   const SizedBox(height: 8),
                                   Row(
                                     children: [
@@ -598,7 +643,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
                                         ),
                                         child: Text(
                                           chat.category,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             color: Colors.blue,
                                             fontSize: 12,
                                           ),
@@ -618,15 +663,15 @@ class _ChatListScreenState extends State<ChatListScreen> {
                                           fontSize: 12,
                                         ),
                                       ),
+                                      const Spacer(),
+                                      Text(
+                                        DateFormat('dd/MM/yyyy HH:mm').format(chat.lastModified),
+                                        style: TextStyle(
+                                          color: isDark ? Colors.white38 : Colors.black38,
+                                          fontSize: 12,
+                                        ),
+                                      ),
                                     ],
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    'Modifié le ${DateFormat('dd/MM/yyyy HH:mm').format(chat.lastModified)}',
-                                    style: TextStyle(
-                                      color: isDark ? Colors.white38 : Colors.black38,
-                                      fontSize: 12,
-                                    ),
                                   ),
                                 ],
                               ),
