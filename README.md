@@ -42,7 +42,7 @@ Pour démarrer avec ce projet, suivez ces étapes :
 
 3. **Configurer la clé API** :
    - Copiez le fichier `lib/config.dart.example` vers `lib/config.dart`
-   - Créez votre clé API sur [Google AI Studio](https://makersuite.google.com/app/apikey)
+   - Créez votre clé API sur [Google AI Studio]([https://makersuite.google.com/app/apikey](https://ai.google.dev/gemini-api?hl=fr))
    - Remplacez `VOTRE_CLE_API_ICI` dans `config.dart` par votre clé API :
      ```dart
      class Config {
