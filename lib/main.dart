@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'config.dart';
+import 'package:file_picker/file_picker.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,7 +48,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Gemini Multi-Chat',
+      title: 'Flutter ChatApp',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         brightness: Brightness.light,
@@ -57,7 +58,105 @@ class _MyAppState extends State<MyApp> {
         brightness: Brightness.dark,
       ),
       themeMode: _themeMode,
-      home: ChatListScreen(toggleTheme: toggleTheme, prefs: widget.prefs),
+      home: HomeScreen(toggleTheme: toggleTheme, prefs: widget.prefs),
+    );
+  }
+}
+
+class HomeScreen extends StatefulWidget {
+  final void Function() toggleTheme;
+  final SharedPreferences prefs;
+
+  const HomeScreen({Key? key, required this.toggleTheme, required this.prefs}) : super(key: key);
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+  String _profileImagePath = '';  // Variable to store the profile picture path
+
+  final List<Widget> _screens = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _screens.addAll([
+      ChatListScreen(toggleTheme: widget.toggleTheme, prefs: widget.prefs),  // Chat screen
+      ProfileScreen(),  // Profile screen
+    ]);
+  }
+
+  void _onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _screens[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onTabTapped,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: '',  // Empty label
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: '',  // Empty label
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ProfileScreen extends StatefulWidget {
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  String? _imagePath;
+
+  Future<void> _pickImage() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(type: FileType.image);
+
+    if (result != null && result.files.single.bytes != null) {
+      setState(() {
+        _imagePath = result.files.single.path;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profil'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 80,
+              backgroundImage: _imagePath != null ? NetworkImage(_imagePath!) : null,
+              child: _imagePath == null ? Icon(Icons.person, size: 80) : null,
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: _pickImage,
+              child: const Text('Changer la photo de profil'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -394,7 +493,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
           elevation: 0,
           backgroundColor: isDark ? const Color(0xFF2D2D2D) : Colors.white,
           title: Text(
-            'Gemini Chat',
+            'ChatApp AI',
             style: GoogleFonts.poppins(
               fontSize: 24,
               fontWeight: FontWeight.w600,
