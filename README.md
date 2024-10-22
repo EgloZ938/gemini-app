@@ -78,7 +78,3 @@ N'hésitez pas à soumettre des **issues** et des **pull requests** pour aider �
 - `shared_preferences`
 - `google_fonts`
 - `flutter_staggered_animations`
-
-## 📜 Licence
-
-Ce projet est sous licence MIT. Consultez le fichier [LICENSE](LICENSE) pour plus de détails.
