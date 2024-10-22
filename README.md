@@ -54,7 +54,7 @@ Pour démarrer avec ce projet, suivez ces étapes :
 4. **Lancer l'application** :
 
    ```bash
-   flutter run
+   flutter run -d web-server
    ```
 
 ## 🎨 Personnalisation
@@ -82,3 +82,4 @@ N'hésitez pas à soumettre des **issues** et des **pull requests** pour aider �
 - `shared_preferences`
 - `google_fonts`
 - `flutter_staggered_animations`
+- `file_picker`
